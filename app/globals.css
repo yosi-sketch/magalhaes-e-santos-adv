@@ -1,52 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
-  --brand-petrol: #01364f;
-  --brand-petrol-dark: #012b3f;
-  --brand-gold: #dfa938;
-  --brand-gold-light: #f4c864;
-  --brand-gold-dark: #b58826;
-  --brand-ink: #0d1b22;
-  --brand-ink-soft: #556874;
-  --brand-ivory: #faf9f6;
+  color-scheme: light dark;
+  --brand-noir: #0b0b0d;
+  --brand-noir-surface: #131316;
+  --brand-noir-card: #18181c;
+  --brand-gold: #c59742;
+  --brand-gold-light: #dec18c;
+  --brand-gold-dark: #ae7f2e;
+  --brand-gold-bright: #e8c679;
+  --brand-ink: #111113;
+  --brand-ink-soft: #5a5751;
+  --brand-ivory: #faf8f5;
   --brand-paper: #ffffff;
 }
 
 @theme inline {
   --font-serif: var(--font-display), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
-  --color-ink: #0d1b22;
-  --color-ink-soft: #556874;
-  --color-ivory: #faf9f6;
+  --color-ink: #111113;
+  --color-ink-soft: #5a5751;
+  --color-ivory: #faf8f5;
 
-  /* Petrol Navy Palette (directly from logo background) */
-  --color-brand-50: #f1f7fa;
-  --color-brand-100: #dff0f8;
-  --color-brand-200: #b0d8eb;
-  --color-brand-300: #68aed2;
-  --color-brand-400: #2a84af;
-  --color-brand-500: #03648f;
-  --color-brand-600: #024b6e;
-  --color-brand-700: #01364f;
-  --color-brand-800: #012b3f;
-  --color-brand-900: #012130;
-  --color-brand-950: #001722;
+  /* Luxury Obsidian / Noir Palette (from logo background) */
+  --color-brand-50: #f6f6f8;
+  --color-brand-100: #e7e7eb;
+  --color-brand-200: #c8c8d2;
+  --color-brand-300: #9e9eb0;
+  --color-brand-400: #6a6a7c;
+  --color-brand-500: #424250;
+  --color-brand-600: #2c2c36;
+  --color-brand-700: #212128;
+  --color-brand-800: #17171c;
+  --color-brand-900: #101013;
+  --color-brand-950: #0a0a0c;
 
-  /* Nobre Metallic Gold Palette (from logo typography and monogram) */
-  --color-gold-50: #fdfbf5;
-  --color-gold-100: #fbf4de;
-  --color-gold-200: #f7e5b5;
-  --color-gold-300: #f2d184;
-  --color-gold-400: #eab952;
-  --color-gold-500: #dfa938;
-  --color-gold-600: #c58f26;
-  --color-gold-700: #9e6f18;
-  --color-gold-800: #7e5717;
-  --color-gold-900: #543912;
-  --color-gold-950: #332107;
+  /* Warm Metallic Gold Palette (from logo monogram and scales) */
+  --color-gold-50: #fbf9f4;
+  --color-gold-100: #f6f0df;
+  --color-gold-200: #ebdcb9;
+  --color-gold-300: #dec184;
+  --color-gold-400: #cca04d;
+  --color-gold-500: #c59742;
+  --color-gold-600: #b0812e;
+  --color-gold-700: #8c6220;
+  --color-gold-800: #6b4a1a;
+  --color-gold-900: #4a3212;
+  --color-gold-950: #2b1c09;
 
-  --shadow-card: 0 18px 48px rgba(1, 43, 63, 0.08);
+  --shadow-card: 0 18px 48px rgba(10, 10, 12, 0.08);
+  --shadow-gold: 0 12px 36px rgba(197, 151, 66, 0.22);
 }
 
 html {
@@ -61,8 +64,8 @@ body {
 }
 
 ::selection {
-  background: #01364f;
-  color: #f4c864;
+  background: #111113;
+  color: #dec184;
 }
 
 .eyebrow,
@@ -70,19 +73,19 @@ body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.67rem;
+  font-size: 0.68rem;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
 .eyebrow {
-  color: #c58f26;
+  color: #b0812e;
 }
 
 .eyebrow-light {
-  color: #f2d184;
+  color: #dec184;
 }
 
 .eyebrow::before,
@@ -97,7 +100,7 @@ body {
 .nav-link {
   position: relative;
   padding-block: 0.5rem;
-  color: #556874;
+  color: #5a5751;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -111,7 +114,7 @@ body {
   bottom: 0;
   left: 0;
   height: 1px;
-  background: #dfa938;
+  background: #c59742;
   content: "";
   transform: scaleX(0);
   transform-origin: left;
@@ -119,7 +122,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #01364f;
+  color: #111113;
 }
 
 .nav-link:hover::after {
@@ -131,7 +134,7 @@ body {
 }
 
 .footer-link:hover {
-  color: #f2d184;
+  color: #dec184;
 }
 
 ::-webkit-scrollbar {
@@ -139,17 +142,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #edf3f6;
+  background: #111113;
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 2px solid #edf3f6;
+  border: 2px solid #111113;
   border-radius: 999px;
-  background: #01364f;
+  background: #c59742;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #dfa938;
+  background: #dec184;
 }
 
 @media (prefers-reduced-motion: reduce) {

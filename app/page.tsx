@@ -11,7 +11,6 @@ import {
 import {
   ArrowRight,
   ArrowUpRight,
-  Award,
   Briefcase,
   CheckCircle2,
   Clock,
@@ -24,22 +23,24 @@ import {
   Scale,
   ShieldCheck,
   Star,
+  Users,
   X,
 } from "lucide-react";
 import GlowingButton from "./components/GlowingButton";
 
-const WHATSAPP_NUMBER = "5535999183277";
-const PHONE_DISPLAY = "(35) 99918-3277";
-const EMAIL_CONTACT = "contato@barbaracarolis.adv.br";
-const INSTAGRAM_URL = "https://www.instagram.com/bcarolis/";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/b%C3%A1rbara-carolis-lima-diniz-65009017a/";
+const WHATSAPP_NUMBER = "5535999587267";
+const PHONE_DISPLAY = "(35) 99958-7267";
+const EMAIL_CONTACT = "contato@magalhaesysantos.adv.br";
+const INSTAGRAM_URL = "https://www.instagram.com/magalhaesesantos.advocacia/";
+const INSTAGRAM_HANDLE = "@magalhaesesantos.advocacia";
 const GOOGLE_MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Av.+Cel.+Carneiro+J%C3%BAnior%2C+57+-+Sl+1004+-+Centro%2C+Itajub%C3%A1+-+MG%2C+37500-018";
+  "https://www.google.com/maps/search/?api=1&query=Magalh%C3%A3es+%26+Santos+Advocacia+Especializada+Av.+Cel.+Carneiro+J%C3%BAnior%2C+124+-+Sl+03+-+Centro%2C+Itajub%C3%A1+-+MG%2C+37500-018";
+const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/search?q=Magalh%C3%A3es+%26+Santos+Advocacia+Especializada#";
 
 function getWhatsAppUrl(message?: string) {
   const defaultText =
-    "Olá, Dra. Bárbara Carolis. Gostaria de solicitar uma consulta jurídica especializada.";
+    "Olá, Dr. Blener e Dra. Joyce. Gostaria de solicitar uma consulta jurídica especializada com a Magalhães & Santos Advocacia.";
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     message || defaultText
   )}`;
@@ -66,7 +67,13 @@ function WhatsAppIcon({
   );
 }
 
-function InstagramIcon({ size = 16 }: { size?: number }) {
+function InstagramIcon({
+  size = 16,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
   return (
     <svg
       aria-hidden="true"
@@ -75,33 +82,14 @@ function InstagramIcon({ size = 16 }: { size?: number }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={2}
+      strokeWidth={1.8}
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
     >
       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
-
-function LinkedInIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      aria-hidden="true"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect width="4" height="12" x="2" y="9" />
-      <circle cx="4" cy="4" r="2" />
     </svg>
   );
 }
@@ -133,216 +121,214 @@ interface PracticeArea {
 
 const practiceAreas: PracticeArea[] = [
   {
-    id: "trabalhista-empresarial",
-    title: "Direito do Trabalho & Empresarial",
-    icon: Briefcase,
-    tag: "Especialista Damásio",
-    summary:
-      "Defesa combativa dos direitos de trabalhadores e assessoria jurídica preventiva e contenciosa de alto nível para empresas.",
-    details:
-      "Com pós-graduação e especialização pelo Damásio Educacional, a Dra. Bárbara Carolis atua de maneira estratégica nas relações de trabalho. Atendemos profissionais e organizações em reclamatórias trabalhistas, rescisões indiretas por falta grave do empregador, recuperação de verbas rescisórias em atraso, equiparação salarial, horas extras, assédio moral e consultoria preventiva contínua para mitigação de passivos trabalhistas.",
-    topics: [
-      "Reclamatórias trabalhistas e rescisões indiretas",
-      "Cobrança de horas extras, adicionais e verbas rescisórias",
-      "Indenizações por assédio moral e acidente de trabalho",
-      "Consultoria preventiva e auditoria de conformidade para empresas",
-    ],
-    whatsAppText:
-      "Olá, Dra. Bárbara Carolis. Gostaria de uma consulta jurídica especializada em Direito do Trabalho.",
-  },
-  {
-    id: "digital-propriedade",
-    title: "Direito Digital & Marcas (INPI)",
-    icon: ShieldCheck,
-    tag: "Inovação & Ativos",
-    summary:
-      "Registro e proteção de marcas no INPI, conformidade com a LGPD, contratos de tecnologia e proteção contra crimes virtuais.",
-    details:
-      "Em um ecossistema digital dinâmico, proteger os ativos intangíveis da sua empresa é essencial. Especialista em Direito Digital pelo Damásio Educacional, a Dra. Bárbara atua com excelência no registro de marcas, patentes e programas de computador no INPI, auditoria e implementação da LGPD, contratos de software e defesa técnica em fraudes eletrônicas e crimes cibernéticos.",
-    topics: [
-      "Registro de marcas, patentes e softwares no INPI",
-      "Adequação e auditoria jurídica à LGPD",
-      "Contratos de tecnologia, licenciamento e SaaS",
-      "Defesa contra golpes digitais, invasões e vazamento de dados",
-    ],
-    whatsAppText:
-      "Olá, Dra. Bárbara Carolis. Gostaria de orientações sobre Direito Digital e Registro de Marcas no INPI.",
-  },
-  {
-    id: "civel-contratos",
-    title: "Direito Cível & Contratos",
-    icon: Scale,
-    tag: "Segurança Patrimonial",
-    summary:
-      "Elaboração minuciosa de contratos, auditoria preventiva, reparações civis por danos e disputas patrimoniais complexas.",
-    details:
-      "Segurança jurídica sólida para relações pessoais e negócios. Atuação na elaboração e revisão minuciosa de contratos civis e comerciais blindados, cobranças e execuções judiciais de títulos, indenizações por danos materiais e morais, rescisões contratuais e resolução de litígios patrimoniais com foco em eficiência e prevenção de riscos.",
-    topics: [
-      "Elaboração e revisão estratégica de contratos civis e comerciais",
-      "Ações de cobrança, execuções de dívidas e recuperação de crédito",
-      "Ações indenizatórias por danos morais e materiais",
-      "Rescisões contratuais e defesas patrimoniais",
-    ],
-    whatsAppText:
-      "Olá, Dra. Bárbara Carolis. Gostaria de uma consulta especializada em Direito Cível e Contratos.",
-  },
-  {
-    id: "consumidor-transito",
-    title: "Consumidor & Trânsito Especializado",
-    icon: Landmark,
-    tag: "Defesa Intransigente",
-    summary:
-      "Combate incisivo a fraudes e abusos bancários, negativações indevidas e recursos especializados em Direito de Trânsito.",
-    details:
-      "Proteção rigorosa contra práticas abusivas do mercado de consumo: empréstimos consignados não autorizados, negativações indevidas em órgãos de proteção ao crédito (SPC/Serasa) e cobranças ilegais. No Direito de Trânsito, atuação técnica em defesas e recursos contra suspensão ou cassação da CNH e infrações administrativas.",
-    topics: [
-      "Fraudes financeiras, golpes bancários e cobranças indevidas",
-      "Indenizações por negativação indevida no SPC/Serasa",
-      "Recursos contra suspensão e cassação da Carteira de Habilitação (CNH)",
-      "Defesa especializada contra multas e penalidades de trânsito",
-    ],
-    whatsAppText:
-      "Olá, Dra. Bárbara Carolis. Gostaria de orientações em Direito do Consumidor ou Trânsito.",
-  },
-  {
-    id: "familia-sucessoes",
-    title: "Família & Sucessões",
+    id: "divorcio-familia",
+    title: "Litígio de Divórcio, Família & Sucessões",
     icon: HeartHandshake,
-    tag: "Atendimento Humanizado",
+    tag: "Especialidade & Sensibilidade",
     summary:
-      "Condução sensível, técnica e discreta em inventários judiciais e extrajudiciais, divórcios e partilhas de bens.",
+      "Condução sensível, sigilosa e tecnicamente firme em divórcios consensuais e litigiosos, partilha de patrimônio, guarda de filhos e inventários.",
     details:
-      "As questões de família e sucessões exigem o equilíbrio perfeito entre firmeza técnica e acolhimento humano. Atuamos com celeridade em inventários e partilhas extrajudiciais em cartório, divórcios consensuais e litigiosos, guarda e regime de convivência de filhos, pensão alimentícia e planejamento sucessório patrimonial.",
+      "As questões de família e sucessões demandam o mais refinado equilíbrio entre firmeza jurídica e acolhimento humano. Sob a condução atenta da Dra. Joyce Santos e do Dr. Blener Magalhães, o escritório atua em divórcios de alta complexidade com partilha equitativa de bens, ações de pensão alimentícia (fixação, revisão e execução), guarda e convivência parental, inventários judiciais e extrajudiciais ágeis em cartório e planejamento sucessório para proteção patrimonial.",
     topics: [
-      "Inventários judiciais e extrajudiciais ágeis em cartório",
-      "Divórcio consensual e litigioso com partilha patrimonial",
-      "Pensão alimentícia, guarda e convivência parental",
-      "Planejamento sucessório e proteção de bens da família",
+      "Divórcio consensual e litigioso com partilha patrimonial estratégica",
+      "Guarda compartilhada, convivência familiar e alienação parental",
+      "Fixação, revisão, exoneração e execução de pensão alimentícia",
+      "Inventários judiciais e extrajudiciais ágeis e planejamento sucessório",
     ],
     whatsAppText:
-      "Olá, Dra. Bárbara Carolis. Gostaria de uma consulta em Direito de Família e Sucessões.",
+      "Olá, Dr. Blener e Dra. Joyce. Gostaria de uma consulta especializada em Divórcio e Direito de Família.",
+  },
+  {
+    id: "litigio-civil",
+    title: "Litígio Civil & Disputas Patrimoniais",
+    icon: Scale,
+    tag: "Combatividade & Blindagem",
+    summary:
+      "Atuação contenciosa vigorosa em reparações civis, cobranças de títulos, rescisões e elaboração de contratos blindados de alto padrão.",
+    details:
+      "A proteção do seu patrimônio e a resolução ágil de conflitos cíveis exigem estratégia processual impecável. Atuamos com extrema técnica na elaboração e auditoria minuciosa de contratos, ações indenizatórias por danos morais e materiais, execuções forçadas de títulos e cobrança de dívidas, defesas possessórias e resolução de controvérsias negociais, prevenindo passivos e garantindo a devida compensação jurídica.",
+    topics: [
+      "Ações indenizatórias por danos materiais, morais e lucros cessantes",
+      "Elaboração e revisão minuciosa de contratos civis e comerciais blindados",
+      "Ações de cobrança, execuções de títulos e recuperação de crédito",
+      "Resolução de litígios imobiliários, possessórios e obrigações de fazer",
+    ],
+    whatsAppText:
+      "Olá, Dr. Blener e Dra. Joyce. Gostaria de orientações sobre Litígio Civil e Contratos.",
+  },
+  {
+    id: "litigio-trabalhista",
+    title: "Litígio Trabalhista & Defesa Estratégica",
+    icon: Briefcase,
+    tag: "Defesa dos Direitos",
+    summary:
+      "Defesa combativa de trabalhadores em reclamatórias complexas e assessoria preventiva/contenciosa especializada para empresas e empresários.",
+    details:
+      "A relação de trabalho exige domínio profundo da jurisprudência dos Tribunais Regionais e do TST. Nossa banca atua com determinação na defesa de direitos trabalhistas sonegados — como rescisão indireta por falta grave do empregador, horas extras, adicionais de insalubridade e periculosidade, verbas rescisórias retidas e indenizações por assédio moral ou acidentes de trabalho —, além de consultoria corporativa para mitigação de passivos trabalhistas.",
+    topics: [
+      "Reclamatórias trabalhistas e pedidos de rescisão indireta",
+      "Cobrança de horas extras, adicionais e reflexos rescisórios",
+      "Indenizações por assédio moral, burnout e acidentes de trabalho",
+      "Consultoria preventiva, auditoria de conformidade e defesa para empresas",
+    ],
+    whatsAppText:
+      "Olá, Dr. Blener e Dra. Joyce. Gostaria de uma avaliação para uma causa em Direito Trabalhista.",
+  },
+  {
+    id: "consumidor-bancario",
+    title: "Direito do Consumidor & Defesa Bancária",
+    icon: Landmark,
+    tag: "Restauração de Direitos",
+    summary:
+      "Combate incisivo a fraudes eletrônicas, golpes bancários, empréstimos consignados não solicitados e negativações indevidas no SPC/Serasa.",
+    details:
+      "Práticas abusivas de instituições financeiras e grandes concessionárias exigem resposta jurídica contundente e célere. Atuamos fortemente na anulação de contratos de empréstimo fraudulentos com pedido de repetição de indébito (devolução em dobro), desconstituição de fraudes cibernéticas e do golpe do PIX, e ações com pedido liminar para exclusão de negativações cadastrais indevidas com indenização por danos morais.",
+    topics: [
+      "Cancelamento de empréstimos consignados fraudulentos e descontos indevidos",
+      "Recuperação de perdas e indenizações em fraudes digitais e golpes bancários",
+      "Liminares para exclusão imediata de negativações irregulares no SPC/Serasa",
+      "Ações indenizatórias contra abusividades de companhias aéreas e operadoras",
+    ],
+    whatsAppText:
+      "Olá, Dr. Blener e Dra. Joyce. Gostaria de orientações jurídicas sobre Direito do Consumidor e Bancário.",
+  },
+  {
+    id: "consultoria-recursos",
+    title: "Assessoria Preventiva & Recursos aos Tribunais",
+    icon: ShieldCheck,
+    tag: "Visão Holística & Recursal",
+    summary:
+      "Atuação recursal nos Tribunais de Justiça e Tribunais Superiores (STJ e STF), com sustentações orais e formulação de soluções extrajudiciais.",
+    details:
+      "Casos complexos muitas vezes são decididos nas instâncias superiores. Desenvolvemos teses jurídicas sólidas, memoriais e sustentações perante os Tribunais Estaduais (TJMG) e Cortes Superiores (STJ, STF, TST). Paralelamente, nossa advocacia consultiva antecipa litígios através de pareceres preventivos, mediações e negociações extrajudiciais bem fundamentadas.",
+    topics: [
+      "Elaboração de recursos especiais, recursos extraordinários e agravos",
+      "Acompanhamento em tribunais estaduais, federais e superiores",
+      "Negociação estratégica extrajudicial e mediação de conflitos",
+      "Pareceres jurídicos para tomada de decisões patrimoniais e empresariais",
+    ],
+    whatsAppText:
+      "Olá, Dr. Blener e Dra. Joyce. Gostaria de uma assessoria estratégica para meu processo/empresa.",
   },
 ];
 
-const clientReviews = [
+interface Testimonial {
+  name: string;
+  reviewsCount: string;
+  date: string;
+  highlight: string;
+  content: string;
+  verified?: boolean;
+}
+
+const clientReviews: Testimonial[] = [
   {
-    name: "Felipe Rodrigues",
-    reviewsCount: "3 avaliações",
-    date: "Há 3 anos",
-    highlight: "Atendimento impecável! Técnico e humanizado",
+    name: "Pietro William",
+    reviewsCount: "6 avaliações · 1 foto",
+    date: "Há 5 meses",
+    highlight: "Resolveram meu problema com muito respeito e empatia",
     content:
-      "Atendimento impecável! Técnico e humanizado! Me fez entender com facilidade todos os passos legais do meu processo. Dra Bárbara está super recomendada!",
+      "Excelentes profissionais! Muito atenciosos, competentes e extremamente capacitados. Resolveram meu problema com muito respeito, atenção e empatia. Recomendo muito!",
+    verified: true,
   },
   {
-    name: "Marcos A R Santos",
+    name: "Giovani",
+    reviewsCount: "1 avaliação",
+    date: "Há 4 meses",
+    highlight: "Só elogios para o Dr. Blener e a Dra. Joyce!",
+    content:
+      "Só elogios para o trabalho do Dr. Blener e da Dra. Joyce! Atendimento super prestativo, esclarecedor e profissional!",
+    verified: true,
+  },
+  {
+    name: "Guilherme Mira",
+    reviewsCount: "2 avaliações",
+    date: "Há 4 meses",
+    highlight: "Muita paciência e clareza. Confio e super recomendo",
+    content:
+      "Profissionais muito bem preparados e qualificados. Tivemos duas experiências distintas, consultamos eles, nos esclareceram tudo com muita paciência e clareza. Confio e super recomendo o trabalho deles para outras pessoas.",
+    verified: true,
+  },
+  {
+    name: "Leandra Lamoglia",
+    reviewsCount: "3 avaliações",
+    date: "Há 5 meses",
+    highlight: "Atendimento impecável! Muito acolhedores e ágeis",
+    content:
+      "Atendimento impecável! Muito acolhedores e ágeis na resolução do meu problema. Super recomendo.",
+    verified: true,
+  },
+  {
+    name: "Michelly Carvalho",
+    reviewsCount: "1 avaliação",
+    date: "Há 4 meses",
+    highlight: "Atendimento maravilhoso, presencial e no online",
+    content:
+      "Sou cliente e sempre fui muito bem tratada tanto presencial quanto no online, atendimento maravilhoso, lugar aconchegante.. super recomendo 🙌🏾💜",
+    verified: true,
+  },
+  {
+    name: "Alyson Ferreira",
+    reviewsCount: "1 avaliação",
+    date: "Há 5 meses",
+    highlight: "Trabalho fenomenal, muito acima da média",
+    content:
+      "O trabalho deles é fenomenal, muito acima da média em tudo o que já presenciei neste ramo. Super recomendo.",
+    verified: true,
+  },
+  {
+    name: "valdineia faria",
     reviewsCount: "4 avaliações",
-    date: "Há 3 anos",
-    highlight: "Empatia e profundo conhecimento das leis",
+    date: "Há 1 mês",
+    highlight: "Explicou todo o processo com clareza",
     content:
-      "Profissional muito competente. Sempre empatica com seu cliente e conhece bem as leis das áreas que atua. Além de ser uma pessoa maravilhosa. ❤️",
+      "Excelentes profissionais, muito atenciosos e competentes. Explicou todo o processo com clareza. Recomendo.",
+    verified: true,
   },
   {
-    name: "Lucas Kaue",
-    reviewsCount: "5 avaliações · 4 fotos",
-    date: "Há 3 anos",
-    highlight: "Extremamente capacitada e comprometida",
-    content:
-      "Excelente profissional, extremamente capacitada e comprometida com as causas.",
-  },
-  {
-    name: "Bruna Martins",
-    reviewsCount: "3 avaliações",
-    date: "Há 3 anos",
-    highlight: "Atualizada, disponível e preocupada em resolver",
-    content:
-      "Excelente profissional. Atualizada, disponível e preocupada em resolver o problema. Indico!",
-  },
-  {
-    name: "Pauline Arantes Ribeiro",
-    reviewsCount: "5 avaliações",
-    date: "Há 2 anos",
-    highlight: "Dedicada, ética e responsável. Indico de olhos fechados!",
-    content:
-      "Excelente profissional! Dedicada, ética e responsável. Indico de olhos fechados!",
-  },
-  {
-    name: "Jeser Giffoni Cruz",
-    reviewsCount: "6 avaliações",
-    date: "Há 3 anos",
-    highlight: "Atendimento esclarecedor e transparente",
-    content:
-      "Dra Bárbara me prestou um excelente atendimento, muito esclarecedora e transparente , recomendo de olhos fechados !",
-  },
-  {
-    name: "Ana Paula Miranda",
-    reviewsCount: "10 avaliações · 3 fotos",
-    date: "Há 3 anos",
-    highlight: "Total confiança, competência e atenção",
-    content:
-      "Advogada extremamente profissional, competente e atenciosa! Me passou total confiança. Recomendo!",
-  },
-  {
-    name: "Mayumi Yukuhiro",
-    reviewsCount: "9 avaliações",
-    date: "Há 3 anos",
-    highlight: "Super atenciosa, amei muito o trabalho",
-    content:
-      "Super atenciosa! Melhor advogada, sério. Amei muito o trabalho dela! ❤️",
-  },
-  {
-    name: "Anjo Acolhedor",
+    name: "Lucas Santiago",
     reviewsCount: "1 avaliação",
-    date: "Há 3 anos",
-    highlight: "Excelência e presteza nas resoluções",
+    date: "Há 4 meses",
+    highlight: "Altamente capacitados e ótimo ambiente",
     content:
-      "Excelencia no atendimento, presteza com o cliente, competência nas resoluções das ações que foram confiadas!",
+      "Profissionais altamente capacitados com atendimento excelente em um ótimo ambiente, indico demais.",
+    verified: true,
   },
   {
-    name: "Luana de Azevedo",
-    reviewsCount: "4 avaliações · 1 foto",
-    date: "Há 3 anos",
-    highlight: "Atendimento excelente e atenção redobrada",
+    name: "Vanda Aparecida de Paula",
+    reviewsCount: "2 avaliações",
+    date: "Há 5 meses",
+    highlight: "Muita competência e profissionalismo",
     content:
-      "Atendimento excelente! Profissional extremamente atenciosa!",
+      "Ótimo atendimento! Muita competência e profissionalismo. Recomendo fortemente!!",
+    verified: true,
   },
   {
-    name: "Nayara Esper",
-    reviewsCount: "7 avaliações",
-    date: "Há 2 anos",
-    highlight: "Super atenciosa e humana, não mede esforços",
+    name: "Maira Fortes",
+    reviewsCount: "2 avaliações",
+    date: "Há 5 meses",
+    highlight: "Agilidade e atenciosos com os clientes",
     content:
-      "Advogada maravilhosa! Super atenciosa e humana! Não mede esforços para ajudar!",
+      "Excelentes profissionais... Agilidade e atenciosos com os clientes.. Super recomendo ..",
+    verified: true,
   },
   {
-    name: "Raissa Diniz Marinho",
-    reviewsCount: "9 avaliações · 1 foto",
-    date: "Há 3 anos",
-    highlight: "Responsável, atenciosa e muito competente",
+    name: "genifer oliveira",
+    reviewsCount: "2 avaliações",
+    date: "Há 5 meses",
+    highlight: "Podem ir sem medo, estará em boas mãos",
     content:
-      "Ótima advogada, responsável, atenciosa e muito competente! Recomendo.",
+      "Super recomendo .... São ótimos profissionais... Podem ir sem medo , estará em boas mãos.",
+    verified: true,
   },
   {
-    name: "Carlos Santos",
-    reviewsCount: "4 avaliações · 9 fotos",
-    date: "Há 3 anos",
-    highlight: "Excelente profissional e muito atenciosa",
-    content: "Excelente profissional e muito atenciosa.",
-  },
-  {
-    name: "Thayane Joanny",
-    reviewsCount: "1 avaliação",
-    date: "Há 3 anos",
-    highlight: "Uma das melhores advogadas de Itajubá",
+    name: "Jacqueline Gonzaga",
+    reviewsCount: "Local Guide · 15 avaliações",
+    date: "Há 5 meses",
+    highlight: "Lugar tranquilo e profissionais muito educados",
     content:
-      "Sem dúvida uma das melhores advogadas de Itajubá! Recomendo de olhos fechados.",
-  },
-  {
-    name: "Breno LLS",
-    reviewsCount: "7 avaliações · 7 fotos",
-    date: "Há 3 anos",
-    highlight: "Estudiosa, persistente, transparente e CORRETA!",
-    content:
-      "Top!!! Estudiosa, persistente, transparente e principalmente CORRETA!!!",
+      "Lugar tranquilo, com profissionais qualificados e muito educados. Fui muito bem atendida. Parabéns aos profissionais 👏👏",
+    verified: true,
   },
 ];
 
@@ -363,8 +349,8 @@ function Heading({
       <h2
         className={
           light
-            ? "font-serif text-4xl leading-[1.07] tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.55rem]"
-            : "font-serif text-4xl leading-[1.07] tracking-[-0.035em] text-ink sm:text-5xl lg:text-[3.55rem]"
+            ? "font-serif text-4xl leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.55rem]"
+            : "font-serif text-4xl leading-[1.08] tracking-[-0.03em] text-brand-950 sm:text-5xl lg:text-[3.55rem]"
         }
       >
         {children}
@@ -401,77 +387,102 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <main className="overflow-hidden bg-ivory text-ink">
-        {/* Navigation Bar - Petrol Navy with Gold Accents */}
-        <header className="sticky top-0 z-40 border-b border-white/10 bg-brand-800/95 backdrop-blur-xl">
-          <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between gap-5 px-5 sm:h-[98px] sm:px-8 lg:px-12">
+      <main className="overflow-hidden bg-brand-950 text-brand-50">
+        {/* Navigation Bar - Obsidian Noir with Gold Accents */}
+        <header className="sticky top-0 z-40 border-b border-white/10 bg-brand-950/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[88px] max-w-7xl items-center justify-between gap-5 px-5 sm:h-[96px] sm:px-8 lg:px-12">
             <a
               href="#inicio"
-              aria-label="Bárbara Carolis Advogados — Início"
+              aria-label="Magalhães & Santos Advocacia Especializada — Início"
               onClick={closeMenu}
-              className="flex items-center gap-3 transition-opacity hover:opacity-95"
+              className="group flex items-center gap-3.5 transition-opacity hover:opacity-95"
             >
-              <Image
-                src="/logo sem fundo.png"
-                width={500}
-                height={167}
-                alt="Bárbara Carolis Advogados — OAB/MG 168.000"
-                priority
-                className="h-12 w-auto object-contain sm:h-14 drop-shadow-[0_2px_12px_rgba(223,169,56,0.2)]"
-              />
+              <div className="relative size-12 shrink-0 sm:size-14">
+                <Image
+                  src="/logo(no background).png"
+                  alt="Logo Magalhães & Santos Advocacia"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 48px, 56px"
+                  className="object-contain drop-shadow-[0_2px_12px_rgba(197,151,66,0.3)] transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-serif text-lg font-bold tracking-[0.04em] text-white sm:text-xl">
+                  MAGALHÃES &amp; SANTOS
+                </span>
+                <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-gold-400 sm:text-[10px]">
+                  Advocacia Especializada
+                </span>
+              </div>
             </a>
 
             <nav
               aria-label="Navegação principal"
               className="hidden items-center gap-7 lg:flex"
             >
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#inicio">
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#inicio"
+              >
                 Início
               </a>
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#sobre">
-                A Advogada
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#socios"
+              >
+                Os Sócios
               </a>
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#atuacao">
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#atuacao"
+              >
                 Áreas de Atuação
               </a>
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#compromisso">
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#metodo"
+              >
                 Diferenciais
               </a>
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#avaliacoes">
-                Avaliações (5.0 ★)
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#avaliacoes"
+              >
+                Avaliações (5,0 ★)
               </a>
-              <a className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300" href="#contato">
+              <a
+                className="text-[11px] font-semibold uppercase tracking-[0.1em] text-white/80 transition-colors hover:text-gold-300"
+                href="#contato"
+              >
                 Contato
               </a>
             </nav>
 
-            <div className="hidden items-center gap-3 lg:flex">
+            <div className="hidden items-center gap-4 lg:flex">
+              <a
+                href={`tel:+${WHATSAPP_NUMBER}`}
+                className="text-[11px] font-medium tracking-wide text-white/70 transition-colors hover:text-gold-300"
+              >
+                {PHONE_DISPLAY}
+              </a>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Instagram da Dra. Bárbara Carolis"
-                className="grid size-10 place-items-center rounded-full border border-white/20 text-gold-300 transition-all hover:border-gold-400 hover:bg-gold-500/10 hover:text-gold-200"
+                aria-label="Instagram da Magalhães & Santos Advocacia"
+                className="grid size-9 place-items-center rounded-full border border-white/20 text-gold-300 transition-all hover:border-gold-400 hover:bg-gold-500/10 hover:text-gold-200"
               >
                 <InstagramIcon size={16} />
-              </a>
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn da Dra. Bárbara Carolis"
-                className="grid size-10 place-items-center rounded-full border border-white/20 text-gold-300 transition-all hover:border-gold-400 hover:bg-gold-500/10 hover:text-gold-200"
-              >
-                <LinkedInIcon size={15} />
               </a>
               <GlowingButton
                 href={getWhatsAppUrl()}
                 target="_blank"
                 size="sm"
                 variant="gold"
-                className="rounded-full shadow-md"
+                className="rounded-full shadow-gold"
               >
-                Consulta no WhatsApp <ArrowUpRight size={14} />
+                <WhatsAppIcon size={14} /> Falar no WhatsApp
               </GlowingButton>
             </div>
 
@@ -501,23 +512,32 @@ export default function Home() {
                 <div className="mx-auto flex max-w-7xl flex-col gap-1 py-4">
                   {[
                     ["Início", "#inicio"],
-                    ["A Advogada", "#sobre"],
+                    ["Os Sócios & Trajetória", "#socios"],
                     ["Áreas de Atuação", "#atuacao"],
-                    ["Diferenciais & Método", "#compromisso"],
+                    ["Diferenciais & Método", "#metodo"],
                     ["Avaliações no Google (5,0 ★)", "#avaliacoes"],
-                    ["Contato & Localização", "#contato"],
+                    ["Contato & Sede", "#contato"],
                   ].map(([label, href]) => (
                     <a
                       key={label}
                       href={href}
                       onClick={closeMenu}
-                      className="py-3 text-sm font-medium text-white/80 hover:text-gold-300"
+                      className="py-3 text-sm font-medium text-white/80 transition-colors hover:text-gold-300"
                     >
                       {label}
                     </a>
                   ))}
                   <a
-                    className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.13em] text-brand-950 shadow-md transition-all hover:brightness-105"
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={closeMenu}
+                    className="flex items-center gap-2.5 py-3 text-sm font-medium text-gold-300 transition-colors hover:text-gold-200"
+                  >
+                    <InstagramIcon size={16} /> Seguir no Instagram ({INSTAGRAM_HANDLE})
+                  </a>
+                  <a
+                    className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.13em] text-brand-950 shadow-gold transition-all hover:brightness-105"
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noreferrer"
@@ -531,43 +551,43 @@ export default function Home() {
           </AnimatePresence>
         </header>
 
-        {/* Hero Section */}
+        {/* Hero Section - High-End Luxury Dark Editorial */}
         <section
           id="inicio"
-          className="relative isolate scroll-mt-24 border-b border-ink/10"
+          className="relative isolate scroll-mt-24 border-b border-white/10 bg-radial-[at_top_right] from-brand-900 via-brand-950 to-brand-950"
         >
-          {/* Subtle Ambient Glows with Petrol and Gold Accents */}
-          <div className="pointer-events-none absolute -right-32 top-8 -z-10 size-[36rem] rounded-full bg-brand-200/30 blur-3xl" />
-          <div className="pointer-events-none absolute -left-20 bottom-10 -z-10 size-[28rem] rounded-full bg-gold-200/25 blur-3xl" />
+          {/* Ambient Lighting Accents */}
+          <div className="pointer-events-none absolute -right-24 top-10 -z-10 size-[38rem] rounded-full bg-gold-500/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -left-20 bottom-10 -z-10 size-[32rem] rounded-full bg-brand-700/20 blur-[130px]" />
 
-          <div className="mx-auto grid min-h-[660px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:min-h-[720px] lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-12 lg:py-20">
+          <div className="mx-auto grid min-h-[660px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:min-h-[740px] lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:px-12 lg:py-24">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={stagger}
-              className="relative z-10 max-w-2xl lg:py-6"
+              className="relative z-10 max-w-2xl lg:py-4"
             >
-              <motion.div variants={reveal} className="eyebrow mb-6">
-                <span className="size-2 rounded-full bg-brand-700" />
-                OAB/MG 168.000 · Centro, Itajubá - MG · Atendimento Brasil
+              <motion.div variants={reveal} className="eyebrow-light mb-6">
+                <span className="size-2 rounded-full bg-gold-400" />
+                5,0 ★ NO GOOGLE (63 AVALIAÇÕES) · ITAJUBÁ - MG · ATENDIMENTO BRASIL
               </motion.div>
 
               <motion.h1
                 variants={reveal}
-                className="max-w-[760px] font-serif text-[3.2rem] leading-[0.98] tracking-[-0.045em] text-ink sm:text-6xl lg:text-[4.75rem]"
+                className="max-w-[760px] font-serif text-[3.1rem] leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.6rem]"
               >
                 Defesa jurídica de alto padrão com{" "}
-                <span className="italic text-brand-700 font-serif">
-                  rigor técnico
+                <span className="italic font-serif bg-gradient-to-r from-gold-300 via-gold-400 to-gold-200 bg-clip-text text-transparent">
+                  combatividade forense
                 </span>{" "}
                 e dedicação artesanal.
               </motion.h1>
 
               <motion.p
                 variants={reveal}
-                className="mt-7 max-w-xl text-[15px] leading-7 text-ink-soft sm:text-base sm:leading-8"
+                className="mt-7 max-w-xl text-[15px] leading-7 text-white/75 sm:text-base sm:leading-8"
               >
-                Conduzida pela <strong className="text-ink font-semibold">Dra. Bárbara Carolis</strong> (OAB/MG 168.000), especialista em Direito do Trabalho e Direito Digital. Atuação ética, transparente e resolutiva para resguardar seu patrimônio e seus direitos fundamentais — atendimento presencial no Centro de Itajubá e on-line em todo o país.
+                Sob a liderança do <strong className="text-white font-semibold">Dr. Blener Magalhães</strong> e da <strong className="text-white font-semibold">Dra. Joyce Santos</strong>, a Magalhães &amp; Santos Advocacia oferece estratégia jurídica personalizada em Litígio Civil, Divórcio &amp; Família e Causas Trabalhistas — com acolhimento pessoal no Centro de Itajubá e atendimento digital seguro em todo o território nacional.
               </motion.p>
 
               <motion.div
@@ -579,13 +599,13 @@ export default function Home() {
                   target="_blank"
                   size="lg"
                   variant="gold"
-                  className="rounded-full shadow-md"
+                  className="rounded-full shadow-gold"
                 >
-                  <WhatsAppIcon size={17} /> Falar com a Dra. Bárbara
+                  <WhatsAppIcon size={17} /> Falar com os Sócios no WhatsApp
                 </GlowingButton>
                 <a
                   href="#atuacao"
-                  className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-ink transition-colors hover:text-brand-700"
+                  className="group inline-flex items-center gap-2 px-3 py-3 text-sm font-semibold text-white/90 transition-colors hover:text-gold-300"
                 >
                   Conhecer áreas de atuação{" "}
                   <ArrowRight
@@ -597,77 +617,80 @@ export default function Home() {
 
               <motion.div
                 variants={reveal}
-                className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-ink/10 pt-6 text-xs text-ink-soft"
+                className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-white/10 pt-6 text-xs text-white/65"
               >
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 font-medium transition-colors hover:text-gold-300"
+                >
+                  <Star size={15} className="fill-gold-400 text-gold-400" />{" "}
+                  5,0 estrelas no Google (63 avaliações unânimes)
+                </a>
                 <span className="inline-flex items-center gap-2 font-medium">
-                  <Star size={15} className="fill-gold-500 text-gold-500" />{" "}
-                  5,0 estrelas no Google (44 avaliações unânimes)
+                  <Users size={15} className="text-gold-400" /> Casal de sócios dedicados à sua causa
                 </span>
                 <span className="inline-flex items-center gap-2 font-medium">
-                  <Award size={16} className="text-brand-700" /> Especialista pelo
-                  Damásio Educacional
-                </span>
-                <span className="inline-flex items-center gap-2 font-medium">
-                  <MapPin size={15} className="text-brand-700" /> Av. Cel.
-                  Carneiro Júnior, 57 · Itajubá
+                  <MapPin size={15} className="text-gold-400" /> Av. Cel. Carneiro Júnior, 124 · Itajubá
                 </span>
               </motion.div>
             </motion.div>
 
-            {/* Hero Image Presentation */}
+            {/* Hero Image Presentation - Dr. Blener & Dra. Joyce Together */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.97, y: 18 }}
+              initial={{ opacity: 0, scale: 0.96, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
                 duration: 0.95,
                 delay: 0.18,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative mx-auto w-full max-w-[460px] lg:ml-auto lg:mr-2"
+              className="relative mx-auto w-full max-w-[480px] lg:ml-auto lg:mr-0"
             >
-              {/* Outer decorative gold border */}
-              <div className="absolute -inset-3 -rotate-2 rounded-[46%_46%_5%_5%] border border-gold-500/35 sm:-inset-4" />
+              {/* Outer decorative gold halo */}
+              <div className="absolute -inset-3 -rotate-1 rounded-2xl border border-gold-500/30 sm:-inset-4" />
 
-              {/* Main portrait */}
-              <div className="relative aspect-[0.82] overflow-hidden rounded-[46%_46%_5%_5%] bg-[#ded7d0] shadow-card">
+              {/* Main portrait container */}
+              <div className="relative aspect-[0.84] overflow-hidden rounded-2xl border border-white/15 bg-brand-900 shadow-2xl">
                 <Image
-                  src="/imgi_7_813101487_18628558288036257_5729430727166619910_n.jpg"
-                  alt="Dra. Bárbara Carolis Lima Diniz — Advogada OAB/MG 168.000"
+                  src="/imgi_65_484354507_17955301970924096_1866708495477717268_n.jpg"
+                  alt="Dr. Blener Magalhães e Dra. Joyce Santos — Magalhães & Santos Advocacia Especializada"
                   fill
                   priority
-                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 42vw"
-                  className="object-cover object-[50%_15%]"
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 70vw, 45vw"
+                  className="object-cover object-[50%_18%]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-3 text-white sm:bottom-8 sm:left-8 sm:right-8">
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-950 via-brand-950/70 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
                   <div>
                     <p className="font-serif text-2xl font-normal tracking-wide text-white">
-                      Dra. Bárbara Carolis
+                      Dr. Blener &amp; Dra. Joyce
                     </p>
-                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-gold-300">
-                      OAB/MG 168.000 · Advocacia
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-300">
+                      Magalhães &amp; Santos Advocacia
                     </p>
                   </div>
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full border border-gold-400/40 bg-brand-950/60 text-gold-300 backdrop-blur-sm">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-full border border-gold-400/50 bg-brand-950/80 text-gold-300 backdrop-blur-md">
                     <Scale size={18} />
                   </span>
                 </div>
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -left-4 top-[14%] rounded-full border border-brand-700/20 bg-ivory px-4 py-2.5 text-[10px] font-bold tracking-[0.14em] text-brand-800 shadow-card sm:-left-9 sm:px-5">
-                ATENDIMENTO HUMANIZADO
+              <div className="absolute -top-3.5 left-6 rounded-full border border-gold-400/40 bg-brand-900/95 px-4 py-2 text-[10px] font-bold tracking-[0.16em] text-gold-200 shadow-xl backdrop-blur-md sm:-top-4 sm:left-8 sm:px-5">
+                CASAL DE SÓCIOS ESPECIALISTAS
               </div>
 
-              <div className="absolute -right-3 bottom-[22%] rounded-2xl border border-gold-500/30 bg-white/95 p-3.5 shadow-card backdrop-blur-md sm:-right-8">
-                <div className="flex items-center gap-2 text-gold-500">
-                  <Star size={14} className="fill-gold-500" />
-                  <span className="font-serif text-lg font-bold text-ink">
+              <div className="absolute -right-3 bottom-[20%] rounded-2xl border border-gold-500/40 bg-brand-900/95 p-3.5 shadow-2xl backdrop-blur-md sm:-right-6">
+                <div className="flex items-center gap-2 text-gold-400">
+                  <Star size={14} className="fill-gold-400" />
+                  <span className="font-serif text-lg font-bold text-white">
                     5,0 / 5,0
                   </span>
                 </div>
-                <p className="mt-0.5 text-[10px] uppercase tracking-wider text-ink-soft">
-                  44 Avaliações no Google
+                <p className="mt-0.5 text-[10px] uppercase tracking-wider text-white/70">
+                  63 Avaliações no Google
                 </p>
               </div>
             </motion.div>
@@ -677,27 +700,27 @@ export default function Home() {
         {/* Highlights Banner */}
         <section
           aria-label="Credenciais e Destaques"
-          className="border-b border-ink/10 bg-white/70"
+          className="border-b border-white/10 bg-brand-900/60 backdrop-blur-md"
         >
           <div className="mx-auto grid max-w-7xl gap-7 px-5 py-8 sm:grid-cols-4 sm:gap-4 sm:px-8 lg:px-12">
             {[
-              ["5,0 ★", "classificação máxima com 44 avaliações unânimes no Google"],
-              ["OAB/MG", "nº 168.000 com sólida e reconhecida trajetória"],
-              ["Especialista", "Direito do Trabalho e Direito Digital (Damásio)"],
-              ["Itajubá & Brasil", "atendimento presencial no Centro e 100% on-line"],
+              ["5,0 ★", "classificação máxima unânime com 63 avaliações no Google"],
+              ["Sócios Titulares", "atendimento direto com o Dr. Blener e a Dra. Joyce"],
+              ["Especializada", "Litígio Civil, Divórcio, Família e Trabalhista"],
+              ["Itajubá & Brasil", "sede no Centro de Itajubá e atendimento 100% on-line"],
             ].map(([value, label], index) => (
               <div
                 key={label}
                 className={
                   index > 0
-                    ? "flex items-center gap-4 sm:justify-center sm:border-l sm:border-ink/10"
+                    ? "flex items-center gap-4 sm:justify-center sm:border-l sm:border-white/10"
                     : "flex items-center gap-4 sm:justify-center"
                 }
               >
-                <span className="font-serif text-3xl font-semibold text-brand-700">
+                <span className="font-serif text-3xl font-semibold text-gold-400">
                   {value}
                 </span>
-                <span className="max-w-[155px] text-[11px] leading-5 text-ink-soft">
+                <span className="max-w-[155px] text-[11px] leading-5 text-white/70">
                   {label}
                 </span>
               </div>
@@ -705,145 +728,198 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sobre a Dra. Bárbara Carolis */}
+        {/* Sobre os Sócios (The Couple & The Firm) */}
         <section
-          id="sobre"
-          className="scroll-mt-24 bg-white py-20 sm:py-28 lg:py-32"
+          id="socios"
+          className="scroll-mt-24 bg-ivory py-20 text-brand-950 sm:py-28 lg:py-32"
         >
-          <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[0.94fr_1.06fr] lg:gap-20 lg:px-12">
-            {/* Visual presentation of Dra. Bárbara */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={reveal}
-              className="relative mx-auto w-full max-w-[520px]"
-            >
-              {/* Primary portrait */}
-              <div className="relative aspect-[0.92] overflow-hidden rounded-[2px] bg-[#ded7d0] shadow-card">
-                <Image
-                  src="/imgi_53_816737078_18628558291036257_752521829256015605_n.jpg"
-                  alt="Dra. Bárbara Carolis — Advogada e Especialista em Direito do Trabalho e Direito Digital"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="object-cover object-[50%_20%]"
-                />
-              </div>
-
-              {/* Authority card with speaking photo */}
-              <div className="absolute -bottom-10 right-2 max-w-[300px] border-l-2 border-brand-700 bg-ivory p-4 shadow-card sm:-right-6 sm:p-5">
-                <div className="flex items-center gap-3">
-                  <div className="relative size-12 shrink-0 overflow-hidden rounded-full border border-gold-500/40">
-                    <Image
-                      src="/imgi_6_658133991_18575277415036257_9164826257039688827_n.jpg"
-                      alt="Dra. Bárbara Carolis em palestra jurídica"
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-700">
-                      Presença & Palestras
-                    </p>
-                    <p className="font-serif text-sm font-semibold text-ink leading-tight">
-                      Voz ativa e atuação institucional
-                    </p>
-                  </div>
-                </div>
-                <p className="mt-2.5 text-[11px] leading-4 text-ink-soft">
-                  Compromisso contínuo com a evolução do Direito e a defesa firme de causas com rigor e ética.
-                </p>
-              </div>
-
-              <span className="absolute -left-4 -top-4 -z-10 size-24 border-l border-t border-brand-700/40 sm:-left-7 sm:-top-7 sm:size-32" />
-            </motion.div>
-
-            {/* Text description */}
+          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={stagger}
+              className="max-w-3xl"
             >
               <motion.p variants={reveal} className="eyebrow">
-                TRAJETÓRIA, RIGOR E HUMANIZAÇÃO
+                QUEM SOMOS · ADVOCACIA A QUATRO MÃOS
               </motion.p>
               <motion.h2
                 variants={reveal}
-                className="mt-4 max-w-2xl font-serif text-4xl leading-[1.09] tracking-[-0.035em] text-ink sm:text-5xl lg:text-[3.45rem]"
+                className="mt-4 font-serif text-4xl leading-[1.08] tracking-[-0.035em] text-brand-950 sm:text-5xl lg:text-[3.5rem]"
               >
-                Uma advocacia pautada na{" "}
-                <span className="italic text-brand-700">
-                  escuta empática
-                </span>{" "}
-                e na combatividade técnica.
+                Uma sociedade fundada na{" "}
+                <span className="italic text-gold-600">cumplicidade</span>, no
+                rigor técnico e na defesa intransigente de quem confia em nós.
               </motion.h2>
-
               <motion.p
                 variants={reveal}
-                className="mt-6 max-w-xl text-[15px] leading-7 text-ink-soft"
+                className="mt-6 text-[15px] leading-7 text-ink-soft sm:text-base sm:leading-8"
               >
-                A <strong className="text-ink font-semibold">Dra. Bárbara Carolis Lima Diniz (OAB/MG 168.000)</strong> é graduada em Direito pelo Centro Universitário Salesiano de São Paulo (UNISAL) e pós-graduada com especializações em <strong className="text-ink">Direito do Trabalho</strong> e <strong className="text-ink">Direito Digital</strong> pelo prestigiado Damásio Educacional.
+                A <strong className="text-brand-950 font-semibold">Magalhães &amp; Santos Advocacia Especializada</strong> é conduzida pelo casal de advogados <strong className="text-brand-950">Dr. Blener Magalhães</strong> e <strong className="text-brand-950">Dra. Joyce Santos</strong>. Unidos pelo rigor ético e pela dedicação à Justiça, construíram um escritório com um compromisso claro: tratar cada cliente com empatia genuína e cada processo como uma missão singular.
               </motion.p>
-
               <motion.p
                 variants={reveal}
-                className="mt-4 max-w-xl text-[15px] leading-7 text-ink-soft"
+                className="mt-4 text-[15px] leading-7 text-ink-soft sm:text-base sm:leading-8"
               >
-                Com escritório sediado no coração de Itajubá - MG, sua prática profissional se destaca pelo atendimento próximo, minucioso e descomplicado. Cada cliente é acolhido com atenção pessoal, sem modelos genéricos, com explicações claras sobre cada passo do processo e total transparência sobre riscos e estratégias.
+                Aqui, sua causa não é terceirizada ou tratada com formulários genéricos. Você é atendido diretamente pelos sócios, recebendo relatórios claros, estratégias personalizadas e total transparência sobre cada movimentação jurídica.
               </motion.p>
+            </motion.div>
 
+            {/* Two Partner Cards - Symmetrical Presentation */}
+            <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:gap-10">
+              {/* Card Dr. Blener Magalhães */}
               <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
                 variants={reveal}
-                className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-brand-950/10 bg-white p-7 shadow-card transition-all duration-300 hover:border-gold-500/40 hover:shadow-xl sm:p-9"
               >
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
-                  <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Estudo artesanal de cada linha do processo</span>
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                  <div className="relative aspect-[0.85] w-full shrink-0 overflow-hidden rounded-xl border border-brand-950/10 bg-brand-900 sm:w-44">
+                    <Image
+                      src="/imgi_62_483862409_17993564879780736_4758234426780214328_n.jpg"
+                      alt="Dr. Blener Magalhães — Sócio-Fundador"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 200px"
+                      className="object-cover object-[50%_15%] transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600">
+                      Sócio-Fundador
+                    </span>
+                    <h3 className="mt-1 font-serif text-3xl font-normal text-brand-950">
+                      Dr. Blener Magalhães
+                    </h3>
+                    <p className="mt-2 text-xs font-semibold text-brand-700">
+                      Litígio Civil, Contratos &amp; Contencioso Estratégico
+                    </p>
+                    <p className="mt-3 text-[13px] leading-6 text-ink-soft">
+                      Atuação incisiva na proteção patrimonial, formulação de teses defensivas e resolução de litígios contratuais e cíveis de alta complexidade.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
-                  <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Transparência radical em todas as etapas</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
-                  <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Especialização contínua e atualização jurídica</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
-                  <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Sede em Itajubá e atendimento digital nacional</span>
+
+                <div className="mt-6 border-t border-brand-950/10 pt-5 text-xs text-ink-soft space-y-2.5">
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Estratégia processual combativa e minuciosa</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Auditoria e elaboração de contratos seguros</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Defesas patrimoniais e recuperação de créditos</span>
+                  </div>
                 </div>
               </motion.div>
 
-              <motion.div variants={reveal} className="mt-9 flex flex-wrap items-center gap-4">
+              {/* Card Dra. Joyce Santos */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={reveal}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-brand-950/10 bg-white p-7 shadow-card transition-all duration-300 hover:border-gold-500/40 hover:shadow-xl sm:p-9"
+              >
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                  <div className="relative aspect-[0.85] w-full shrink-0 overflow-hidden rounded-xl border border-brand-950/10 bg-brand-900 sm:w-44">
+                    <Image
+                      src="/imgi_63_484837281_17993564591780736_1958939322199981627_n.jpg"
+                      alt="Dra. Joyce Santos — Sócia-Fundadora"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 200px"
+                      className="object-cover object-[50%_15%] transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600">
+                      Sócia-Fundadora
+                    </span>
+                    <h3 className="mt-1 font-serif text-3xl font-normal text-brand-950">
+                      Dra. Joyce Santos
+                    </h3>
+                    <p className="mt-2 text-xs font-semibold text-brand-700">
+                      Litígio de Divórcio, Família, Sucessões &amp; Trabalhista
+                    </p>
+                    <p className="mt-3 text-[13px] leading-6 text-ink-soft">
+                      Especialista no acolhimento de famílias e trabalhadores, aliando extrema sensibilidade à proteção de direitos e partilha patrimonial justa.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 border-t border-brand-950/10 pt-5 text-xs text-ink-soft space-y-2.5">
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Condução acolhedora e sigilosa em divórcios</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Defesa combativa de direitos dos trabalhadores</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 font-medium text-brand-950">
+                    <CheckCircle2 size={16} className="text-gold-600 shrink-0" />
+                    <span>Agilidade em inventários e partilhas extrajudiciais</span>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Synergy & Trust Box */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={reveal}
+              className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-gold-500/30 bg-white p-8 shadow-card sm:flex-row sm:p-10"
+            >
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-2 text-gold-600">
+                  <Users size={18} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em]">
+                    Atendimento Exclusivo pelos Sócios
+                  </span>
+                </div>
+                <h4 className="mt-2 font-serif text-2xl text-brand-950 sm:text-3xl">
+                  Sua causa analisada com rigor por quem realmente decide.
+                </h4>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                  Tenha a tranquilidade de contar com uma advocacia dedicada, que estuda cada detalhe documental e mantém você atualizado a cada avanço do processo.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <GlowingButton
                   href={getWhatsAppUrl(
-                    "Olá, Dra. Bárbara Carolis. Gostaria de entender como seu escritório pode atuar no meu caso."
+                    "Olá, Dr. Blener e Dra. Joyce. Gostaria de agendar uma consulta jurídica para meu caso."
                   )}
                   target="_blank"
                   size="md"
                   variant="gold"
-                  className="rounded-full shadow-md"
+                  className="rounded-full shadow-gold"
                 >
-                  <WhatsAppIcon size={16} /> Agendar consulta com a Dra. Bárbara
+                  <WhatsAppIcon size={16} /> Consultar os Sócios
                 </GlowingButton>
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-800 hover:text-brand-700 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full border border-brand-950/20 bg-brand-50 px-5 py-3 text-xs font-semibold text-brand-950 transition-all hover:border-gold-600 hover:bg-gold-50/80 hover:text-gold-900"
                 >
-                  <InstagramIcon size={16} /> Seguir no Instagram
+                  <InstagramIcon size={15} /> Seguir no Instagram
                 </a>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Áreas de Atuação */}
+        {/* Áreas de Atuação Estratégica */}
         <section
           id="atuacao"
-          className="scroll-mt-24 bg-ivory py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 bg-brand-900 py-20 text-white sm:py-28 lg:py-32"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <motion.div
@@ -855,15 +931,16 @@ export default function Home() {
             >
               <Heading
                 eyebrow="ÁREAS DE ATUAÇÃO ESTRATÉGICA"
-                description="Conhecimento técnico aprofundado para resguardar seus direitos trabalhistas, negócios, marcas e patrimônio."
+                light
+                description="Conhecimento técnico aprofundado para resguardar seus direitos civis, familiares, trabalhistas e patrimoniais."
               >
                 Segurança jurídica e assertividade nos{" "}
-                <span className="italic text-brand-700">
+                <span className="italic font-serif bg-gradient-to-r from-gold-300 via-gold-400 to-gold-200 bg-clip-text text-transparent">
                   momentos mais decisivos.
                 </span>
               </Heading>
-              <p className="max-w-[260px] pb-1 text-xs leading-6 text-ink-soft">
-                Selecione uma área para ver os detalhes e consultar diretamente a Dra. Bárbara Carolis.
+              <p className="max-w-[270px] pb-1 text-xs leading-6 text-white/70">
+                Clique em uma área para visualizar as demandas atendidas e iniciar uma consulta especializada com os sócios.
               </p>
             </motion.div>
 
@@ -872,7 +949,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.12 }}
               variants={stagger}
-              className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+              className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
             >
               {practiceAreas.map((area, index) => {
                 const Icon = area.icon;
@@ -880,25 +957,25 @@ export default function Home() {
                   <motion.article
                     key={area.id}
                     variants={reveal}
-                    className="group flex min-h-[350px] flex-col border border-ink/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-700/40 hover:shadow-card sm:p-8"
+                    className="group flex min-h-[360px] flex-col rounded-2xl border border-white/10 bg-brand-950/80 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-400/50 hover:shadow-2xl sm:p-8"
                   >
                     <div className="flex items-start justify-between">
-                      <span className="grid size-12 place-items-center rounded-full bg-brand-50 text-brand-700 transition-colors group-hover:bg-brand-700 group-hover:text-white">
-                        <Icon size={22} strokeWidth={1.5} />
+                      <span className="grid size-12 place-items-center rounded-xl border border-gold-500/30 bg-brand-900 text-gold-300 transition-colors group-hover:bg-gold-500 group-hover:text-brand-950">
+                        <Icon size={22} strokeWidth={1.7} />
                       </span>
-                      <span className="font-serif text-2xl text-gold-600/70">
+                      <span className="font-serif text-2xl text-gold-400/60">
                         0{index + 1}
                       </span>
                     </div>
 
                     <div className="mt-6">
-                      <span className="inline-block rounded-full bg-brand-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-brand-800">
+                      <span className="inline-block rounded-full border border-gold-500/30 bg-gold-500/10 px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-gold-300">
                         {area.tag}
                       </span>
-                      <h3 className="mt-3 font-serif text-[1.65rem] leading-tight text-ink">
+                      <h3 className="mt-3 font-serif text-[1.65rem] leading-tight text-white group-hover:text-gold-200 transition-colors">
                         {area.title}
                       </h3>
-                      <p className="mt-3 text-[13px] leading-6 text-ink-soft">
+                      <p className="mt-3 text-[13px] leading-6 text-white/70">
                         {area.summary}
                       </p>
                     </div>
@@ -906,9 +983,9 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setActiveArea(area)}
-                      className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-6 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-800 hover:text-brand-700 cursor-pointer"
+                      className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-6 text-[10px] font-bold uppercase tracking-[0.18em] text-gold-300 hover:text-gold-200 cursor-pointer"
                     >
-                      Ver detalhes e tópicos{" "}
+                      Ver detalhes e demandas{" "}
                       <ArrowRight
                         size={14}
                         className="transition-transform group-hover/link:translate-x-1"
@@ -921,19 +998,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Diferenciais / Nosso Compromisso */}
+        {/* Diferenciais / Nosso Método */}
         <section
-          id="compromisso"
-          className="relative overflow-hidden bg-brand-900 py-20 text-white sm:py-28 lg:py-32"
+          id="metodo"
+          className="relative overflow-hidden bg-brand-950 py-20 text-white sm:py-28 lg:py-32"
         >
-          <div className="pointer-events-none absolute -left-28 top-1/4 size-96 rounded-full bg-brand-700/25 blur-3xl" />
-          <div className="pointer-events-none absolute -right-28 bottom-1/4 size-96 rounded-full bg-gold-500/15 blur-3xl" />
+          <div className="pointer-events-none absolute -left-28 top-1/4 size-96 rounded-full bg-gold-500/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -right-28 bottom-1/4 size-96 rounded-full bg-brand-700/20 blur-[120px]" />
 
           <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-12">
             <Heading
               eyebrow="NOSSO COMPROMISSO PROFISSIONAL"
               light
-              description="A condução de cada caso com a máxima técnica, transparência irrestrita e respeito ao tempo e aos anseios de quem nos procura."
+              description="A condução de cada caso com a máxima técnica jurídica, transparência irrestrita e respeito ao tempo e à história de quem nos procura."
             >
               A precisão técnica aliada ao{" "}
               <span className="italic text-gold-300">
@@ -946,23 +1023,28 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={stagger}
-              className="divide-y divide-white/15"
+              className="divide-y divide-white/10"
             >
               {[
                 [
                   "01",
-                  "Atendimento Técnico & Humanizado",
-                  "Tratamos cada cliente com empatia genuína, atenção integral e paciência para esclarecer dúvidas em linguagem acessível e acolhedora.",
+                  "Atendimento Conduzido Diretamente pelos Sócios",
+                  "Você tem a segurança de conversar e traçar estratégias diretamente com o Dr. Blener e com a Dra. Joyce, sem intermediários desatentos ou respostas evasivas.",
                 ],
                 [
                   "02",
-                  "Transparência e Comunicação Ativa",
-                  "Você é mantido informado sobre cada movimentação em tempo real, compreendendo com clareza os passos jurídicos, as chances reais e as estratégias adotadas.",
+                  "Transparência Radical & Clareza Sem Juridiquês",
+                  "Você entende cada passo do seu processo em linguagem direta e acessível. Informamos com total honestidade sobre riscos, prazos reais e expectativas concretas.",
                 ],
                 [
                   "03",
-                  "Dedicação Artesanal Sem Modelos Prontos",
-                  "Lemos cada documento com extremo critério e elaboramos peças customizadas, aliando doutrina atualizada e jurisprudência combativa para buscar o melhor resultado.",
+                  "Dedicação Artesanal Sem Petições Genéricas",
+                  "Cada história é única. Analisamos minuciosamente cada documento e prova, aplicando jurisprudência atualizada para construir peças processuais robustas e vitoriosas.",
+                ],
+                [
+                  "04",
+                  "Ambiente Acolhedor & Presença Digital Nacional",
+                  "Oferecemos uma estrutura confortável e reservada no Centro de Itajubá para atendimento presencial, além de ferramentas seguras para consultas online em todo o Brasil.",
                 ],
               ].map(([number, title, description]) => (
                 <motion.div
@@ -985,50 +1067,50 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Avaliações no Google (Depoimentos Reais Fornecidos) */}
+        {/* Avaliações no Google (Prova Social Real - 5.0 Estrelas com 63 Avaliações) */}
         <section
           id="avaliacoes"
-          className="scroll-mt-24 bg-white py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 bg-ivory py-20 text-brand-950 sm:py-28 lg:py-32"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:items-center">
               <div>
                 <Heading
                   eyebrow="PROVA SOCIAL & AVALIAÇÕES REAIS"
-                  description="A reputação sólida da Dra. Bárbara Carolis é comprovada pelo reconhecimento de quem confiou seu processo ao escritório. Confira depoimentos autênticos no Google Maps."
+                  description="A reputação da Magalhães & Santos Advocacia é atestada por quem viveu a experiência do nosso atendimento. Todas as avaliações são públicas e verificadas no Google Maps."
                 >
                   Confiança atestada por quem{" "}
-                  <span className="italic text-brand-700">
+                  <span className="italic text-gold-600">
                     vivenciou nosso atendimento.
                   </span>
                 </Heading>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <a
-                    href={GOOGLE_MAPS_URL}
+                    href={GOOGLE_REVIEWS_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-2 border-b-2 border-gold-500 pb-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-800 hover:text-brand-700"
+                    className="group inline-flex items-center gap-2 border-b-2 border-gold-500 pb-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-950 hover:text-gold-700 transition-colors"
                   >
                     Ver perfil e avaliações no Google <ArrowUpRight size={15} />
                   </a>
                 </div>
 
-                {/* Rating highlights tags directly from client google data */}
+                {/* Rating highlights tags */}
                 <div className="mt-9 flex flex-wrap gap-2">
                   {[
-                    "Atenciosa (8 menções)",
-                    "Transparente",
-                    "Dedicada",
-                    "Responsável",
-                    "Ética e Correta",
-                    "Atendimento Humanizado",
+                    "Atenciosos & Competentes",
+                    "Paciência e Clareza",
+                    "Ambiente Aconchegante",
+                    "Profissionais Qualificados",
+                    "Muito Acima da Média",
+                    "Super Recomendo",
                   ].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-ivory px-3.5 py-1.5 text-[11px] font-medium text-ink-soft"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-brand-950/10 bg-white px-3.5 py-1.5 text-[11px] font-medium text-ink-soft shadow-xs"
                     >
-                      <CheckCircle2 size={13} className="text-brand-700" />
+                      <CheckCircle2 size={13} className="text-gold-600" />
                       {tag}
                     </span>
                   ))}
@@ -1036,15 +1118,18 @@ export default function Home() {
               </div>
 
               {/* Public score box */}
-              <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden border border-gold-400/30 bg-ivory p-8 shadow-card sm:p-10">
-                <div className="absolute -right-10 -top-16 size-56 rounded-full border border-brand-700/10" />
-                <div className="absolute -right-2 -top-8 size-40 rounded-full border border-brand-700/10" />
+              <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-2xl border border-gold-400/40 bg-brand-950 p-8 text-white shadow-2xl sm:p-10">
+                <div className="absolute -right-10 -top-16 size-56 rounded-full border border-gold-400/10" />
+                <div className="absolute -right-2 -top-8 size-40 rounded-full border border-gold-400/10" />
 
                 <div className="relative flex items-center justify-between gap-4">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-800">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-300">
                     Avaliações Verificadas · Google Maps
                   </span>
-                  <div className="flex gap-1 text-gold-500" aria-label="5 estrelas de 5">
+                  <div
+                    className="flex gap-1 text-gold-400"
+                    aria-label="5 estrelas de 5"
+                  >
                     {Array.from({ length: 5 }, (_, index) => (
                       <Star
                         key={index}
@@ -1058,18 +1143,18 @@ export default function Home() {
 
                 <div className="relative mt-8 flex flex-wrap items-end justify-between gap-6">
                   <div>
-                    <span className="font-serif text-7xl font-normal leading-none text-ink sm:text-8xl">
+                    <span className="font-serif text-7xl font-normal leading-none text-white sm:text-8xl">
                       5,0
                     </span>
-                    <p className="mt-2 text-xs font-semibold text-brand-800">
+                    <p className="mt-2 text-xs font-semibold text-gold-300">
                       Excelente · Classificação Máxima Unânime
                     </p>
                   </div>
                   <div className="pb-1 text-right">
-                    <p className="font-serif text-3xl font-semibold text-brand-700">
-                      44 avaliações
+                    <p className="font-serif text-3xl font-semibold text-white">
+                      63 avaliações
                     </p>
-                    <p className="mt-1 text-xs text-ink-soft">
+                    <p className="mt-1 text-xs text-white/70">
                       100% de clientes satisfeitos no Google
                     </p>
                   </div>
@@ -1082,7 +1167,7 @@ export default function Home() {
               {clientReviews.slice(0, 4).map((review) => (
                 <div
                   key={review.name}
-                  className="flex flex-col justify-between border border-ink/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
+                  className="flex flex-col justify-between rounded-xl border border-brand-950/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -1101,7 +1186,7 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-bold text-brand-800">
+                    <p className="mt-4 text-xs font-bold text-brand-950">
                       &ldquo;{review.highlight}&rdquo;
                     </p>
 
@@ -1110,8 +1195,8 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-ink">
+                  <div className="mt-6 border-t border-brand-950/10 pt-4">
+                    <p className="font-serif text-base font-semibold text-brand-950">
                       {review.name}
                     </p>
                     <p className="text-[10px] uppercase tracking-wider text-ink-soft">
@@ -1127,7 +1212,7 @@ export default function Home() {
               {clientReviews.slice(4, 8).map((review) => (
                 <div
                   key={review.name}
-                  className="flex flex-col justify-between border border-ink/10 bg-ivory/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
+                  className="flex flex-col justify-between rounded-xl border border-brand-950/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -1146,7 +1231,7 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-bold text-brand-800">
+                    <p className="mt-4 text-xs font-bold text-brand-950">
                       &ldquo;{review.highlight}&rdquo;
                     </p>
 
@@ -1155,8 +1240,8 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-ink">
+                  <div className="mt-6 border-t border-brand-950/10 pt-4">
+                    <p className="font-serif text-base font-semibold text-brand-950">
                       {review.name}
                     </p>
                     <p className="text-[10px] uppercase tracking-wider text-ink-soft">
@@ -1172,7 +1257,7 @@ export default function Home() {
               {clientReviews.slice(8, 12).map((review) => (
                 <div
                   key={review.name}
-                  className="flex flex-col justify-between border border-ink/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
+                  className="flex flex-col justify-between rounded-xl border border-brand-950/10 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/40 hover:shadow-card"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -1191,7 +1276,7 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-bold text-brand-800">
+                    <p className="mt-4 text-xs font-bold text-brand-950">
                       &ldquo;{review.highlight}&rdquo;
                     </p>
 
@@ -1200,8 +1285,8 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-ink">
+                  <div className="mt-6 border-t border-brand-950/10 pt-4">
+                    <p className="font-serif text-base font-semibold text-brand-950">
                       {review.name}
                     </p>
                     <p className="text-[10px] uppercase tracking-wider text-ink-soft">
@@ -1214,19 +1299,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contato & Localização */}
+        {/* Contato & Sede em Itajubá */}
         <section
           id="contato"
-          className="scroll-mt-24 bg-ivory py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 bg-brand-900 py-20 text-white sm:py-28 lg:py-32"
         >
           <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-12">
             <div>
               <Heading
                 eyebrow="CONTATO & LOCALIZAÇÃO"
-                description="Agende sua consulta presencial no Centro de Itajubá ou realize seu atendimento de forma totalmente on-line com sigilo e segurança."
+                light
+                description="Agende sua consulta presencial em nosso escritório no Centro de Itajubá ou realize seu atendimento de forma totalmente on-line com total sigilo e conveniência."
               >
                 Estamos prontos para{" "}
-                <span className="italic text-brand-700">ouvir sua causa.</span>
+                <span className="italic font-serif bg-gradient-to-r from-gold-300 via-gold-400 to-gold-200 bg-clip-text text-transparent">
+                  ouvir o seu caso.
+                </span>
               </Heading>
 
               <div className="mt-9 flex flex-col items-start gap-4">
@@ -1235,103 +1323,96 @@ export default function Home() {
                   target="_blank"
                   size="lg"
                   variant="gold"
-                  className="rounded-full shadow-md"
+                  className="rounded-full shadow-gold"
                 >
                   <WhatsAppIcon size={17} /> Iniciar conversa no WhatsApp
                 </GlowingButton>
-                <p className="text-[11px] leading-5 text-ink-soft">
-                  Atendimento direto e retorno com presteza:{" "}
-                  <strong className="text-ink">{PHONE_DISPLAY}</strong>.
+                <p className="text-[11px] leading-5 text-white/70">
+                  Atendimento direto e retorno com agilidade:{" "}
+                  <strong className="text-white">{PHONE_DISPLAY}</strong>.
                 </p>
               </div>
 
-              <div className="mt-10 space-y-4 text-xs text-ink-soft">
+              <div className="mt-10 space-y-4 text-xs text-white/75">
                 <div className="flex items-center gap-3">
-                  <Clock size={16} className="text-brand-700" />
-                  <span>Segunda a Sexta: 09h às 18h (sob agendamento prévio)</span>
+                  <Clock size={16} className="text-gold-400 shrink-0" />
+                  <span>Segunda a Sexta: 09h às 18h (atendimento sob agendamento)</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone size={16} className="text-brand-700" />
+                  <Phone size={16} className="text-gold-400 shrink-0" />
                   <a
                     href={`tel:+${WHATSAPP_NUMBER}`}
-                    className="hover:text-brand-700 transition-colors"
+                    className="hover:text-gold-300 transition-colors"
                   >
                     {PHONE_DISPLAY}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-brand-700" />
+                  <Mail size={16} className="text-gold-400 shrink-0" />
                   <a
                     href={`mailto:${EMAIL_CONTACT}`}
-                    className="hover:text-brand-700 transition-colors"
+                    className="hover:text-gold-300 transition-colors"
                   >
                     {EMAIL_CONTACT}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <InstagramIcon size={16} />
+                  <InstagramIcon size={16} className="text-gold-400 shrink-0" />
                   <a
                     href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-brand-700 transition-colors"
+                    className="hover:text-gold-300 transition-colors"
                   >
-                    @bcarolis
+                    Instagram: {INSTAGRAM_HANDLE}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <LinkedInIcon size={16} />
-                  <a
-                    href={LINKEDIN_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-700 transition-colors"
-                  >
-                    LinkedIn: Bárbara Carolis
-                  </a>
+                  <MapPin size={16} className="text-gold-400 shrink-0" />
+                  <span>Av. Cel. Carneiro Júnior, 124 - Sl 03 - Centro, Itajubá - MG, 37500-018</span>
                 </div>
               </div>
             </div>
 
             {/* Address & Office Card */}
-            <div className="relative overflow-hidden border border-ink/10 bg-white p-7 sm:p-10 shadow-card">
-              <div className="absolute right-0 top-0 h-1.5 w-32 bg-brand-700" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-brand-950 p-7 sm:p-10 shadow-2xl">
+              <div className="absolute right-0 top-0 h-1.5 w-32 bg-gradient-to-r from-gold-500 to-gold-400" />
 
               <div className="flex items-center gap-4">
-                <span className="grid size-12 place-items-center rounded-full bg-brand-50 text-brand-700">
+                <span className="grid size-12 place-items-center rounded-xl border border-gold-400/30 bg-brand-900 text-gold-300">
                   <MapPin size={22} strokeWidth={1.6} />
                 </span>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
                     Sede do Escritório
                   </p>
-                  <p className="mt-1 font-serif text-2xl text-ink">
-                    Itajubá · Minas Gerais
+                  <p className="mt-1 font-serif text-2xl text-white">
+                    Centro · Itajubá - MG
                   </p>
                 </div>
               </div>
 
-              <address className="mt-7 max-w-md not-italic text-[14px] leading-7 text-ink-soft">
-                <strong className="text-ink font-semibold">
-                  Almeida & Carolis Advogados Associados
+              <address className="mt-7 max-w-md not-italic text-[14px] leading-7 text-white/75">
+                <strong className="text-white font-semibold">
+                  Magalhães &amp; Santos Advocacia Especializada
                 </strong>
                 <br />
-                Avenida Coronel Carneiro Júnior, 57 - Sala 1004 (10º andar)
+                Avenida Coronel Carneiro Júnior, 124 - Sala 03
                 <br />
                 Centro, Itajubá - MG, CEP 37500-018, Brasil
               </address>
 
-              <div className="my-7 h-px bg-ink/10" />
+              <div className="my-7 h-px bg-white/10" />
 
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <p className="text-xs text-ink-soft">
-                  Atendimento presencial no Centro e on-line em todo o Brasil
+                <p className="text-xs text-white/70">
+                  Atendimento presencial no Centro e on-line para todo o Brasil
                 </p>
                 <a
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:border-brand-700 hover:bg-brand-50 hover:text-brand-800"
+                  className="inline-flex items-center gap-2 rounded-full border border-gold-400/40 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-gold-300 transition-colors hover:border-gold-400 hover:bg-gold-500/10 hover:text-white"
                 >
                   Abrir no Google Maps <ArrowUpRight size={14} />
                 </a>
@@ -1341,24 +1422,23 @@ export default function Home() {
         </section>
 
         {/* Pre-Footer CTA Strip */}
-        <section className="bg-brand-800 px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 shadow-inner">
+        <section className="border-t border-white/10 bg-radial-[at_center] from-brand-900 via-brand-950 to-brand-950 px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-7 sm:flex-row sm:items-center">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">
-                BÁRBARA CAROLIS ADVOGADOS · OAB/MG 168.000
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
+                MAGALHÃES &amp; SANTOS ADVOCACIA ESPECIALIZADA
               </p>
               <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl text-white">
-                Pronto para resguardar seus direitos com quem realmente se dedica
-                à sua causa?
+                Pronto para resguardar seus direitos com quem realmente se dedica à sua causa?
               </h2>
             </div>
             <a
               href={getWhatsAppUrl(
-                "Olá, Dra. Bárbara. Gostaria de agendar uma consulta inicial para avaliar minha situação."
+                "Olá, Dr. Blener e Dra. Joyce. Gostaria de agendar uma consulta inicial para avaliar minha situação."
               )}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex w-fit shrink-0 items-center gap-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-950 shadow-md transition-all hover:-translate-y-0.5 hover:brightness-105 hover:shadow-lg"
+              className="group inline-flex w-fit shrink-0 items-center gap-3 rounded-full bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 px-7 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-950 shadow-gold transition-all hover:-translate-y-0.5 hover:brightness-105 hover:shadow-lg"
             >
               <WhatsAppIcon size={17} /> Falar no WhatsApp <ArrowUpRight size={15} />
             </a>
@@ -1366,55 +1446,64 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-brand-950 px-5 py-14 text-white sm:px-8 lg:px-12">
+        <footer className="border-t border-white/10 bg-brand-950 px-5 py-14 text-white sm:px-8 lg:px-12">
           <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr]">
             <div>
-              <div className="inline-flex rounded-sm bg-brand-900/80 border border-white/10 p-3.5 shadow-md">
-                <Image
-                  src="/logo sem fundo.png"
-                  width={450}
-                  height={150}
-                  alt="Bárbara Carolis Advogados"
-                  className="h-14 w-auto object-contain"
-                />
+              <div className="flex items-center gap-3.5">
+                <div className="relative size-12 shrink-0">
+                  <Image
+                    src="/logo(no background).png"
+                    alt="Logo Magalhães & Santos"
+                    fill
+                    sizes="48px"
+                    className="object-contain drop-shadow-[0_2px_12px_rgba(197,151,66,0.3)]"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-serif text-lg font-bold tracking-[0.04em] text-white">
+                    MAGALHÃES &amp; SANTOS
+                  </span>
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-gold-400">
+                    Advocacia Especializada
+                  </span>
+                </div>
               </div>
               <p className="mt-5 max-w-xs text-xs leading-6 text-white/65">
-                Advocacia estratégica, rigor técnico e atendimento dedicado. Sede
-                no Centro de Itajubá - MG e atendimento digital seguro para todo o Brasil.
+                Advocacia estratégica, rigor técnico e atendimento dedicado conduzido pelos sócios Dr. Blener Magalhães e Dra. Joyce Santos. Sede no Centro de Itajubá - MG e assessoria on-line para todo o Brasil.
               </p>
-              <p className="mt-3 text-[11px] font-semibold text-gold-300">
-                Inscrição OAB/MG 168.000
+              <p className="mt-3 text-[11px] font-semibold text-gold-400">
+                Itajubá - Minas Gerais
               </p>
             </div>
 
             <div>
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">
+              <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
                 Navegação
               </h2>
               <div className="mt-4 flex flex-col items-start gap-3 text-xs text-white/70">
                 <a className="footer-link" href="#inicio">
                   Início
                 </a>
-                <a className="footer-link" href="#sobre">
-                  A Advogada & Trajetória
+                <a className="footer-link" href="#socios">
+                  Os Sócios &amp; Trajetória
                 </a>
                 <a className="footer-link" href="#atuacao">
                   Áreas de Atuação
                 </a>
-                <a className="footer-link" href="#compromisso">
-                  Diferenciais & Método
+                <a className="footer-link" href="#metodo">
+                  Diferenciais &amp; Método
                 </a>
                 <a className="footer-link" href="#avaliacoes">
                   Avaliações no Google (5,0 ★)
                 </a>
                 <a className="footer-link" href="#contato">
-                  Contato & Localização
+                  Contato &amp; Localização
                 </a>
               </div>
             </div>
 
             <div>
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">
+              <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
                 Contato Direto
               </h2>
               <div className="mt-4 flex flex-col items-start gap-3 text-xs text-white/70">
@@ -1425,6 +1514,12 @@ export default function Home() {
                   className="footer-link inline-flex items-center gap-2"
                 >
                   <WhatsAppIcon size={15} /> WhatsApp: {PHONE_DISPLAY}
+                </a>
+                <a
+                  href={`tel:+${WHATSAPP_NUMBER}`}
+                  className="footer-link inline-flex items-center gap-2"
+                >
+                  <Phone size={15} className="shrink-0" /> Telefone: {PHONE_DISPLAY}
                 </a>
                 <a
                   href={`mailto:${EMAIL_CONTACT}`}
@@ -1438,15 +1533,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="footer-link inline-flex items-center gap-2"
                 >
-                  <InstagramIcon size={15} /> Instagram: @bcarolis
-                </a>
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="footer-link inline-flex items-center gap-2"
-                >
-                  <LinkedInIcon size={15} /> LinkedIn: Bárbara Carolis
+                  <InstagramIcon size={15} className="shrink-0" /> {INSTAGRAM_HANDLE}
                 </a>
                 <a
                   href={GOOGLE_MAPS_URL}
@@ -1455,15 +1542,15 @@ export default function Home() {
                   className="footer-link inline-flex items-start gap-2"
                 >
                   <MapPin size={15} className="mt-0.5 shrink-0 text-gold-400" />
-                  <span>Av. Cel. Carneiro Júnior, 57 - Sl 1004, Centro, Itajubá - MG</span>
+                  <span>Av. Cel. Carneiro Júnior, 124 - Sl 03, Centro, Itajubá - MG</span>
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/15 pt-6 text-[10px] text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-[10px] text-white/50 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} Dra. Bárbara Carolis Lima Diniz (OAB/MG 168.000). Todos os direitos reservados.
+              © {new Date().getFullYear()} Magalhães &amp; Santos Advocacia Especializada. Todos os direitos reservados.
             </p>
             <p>
               Conteúdo meramente informativo, em estrita conformidade com o Código de Ética e Disciplina da OAB.
@@ -1475,7 +1562,7 @@ export default function Home() {
         <AnimatePresence>
           {activeArea && (
             <motion.div
-              className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+              className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 p-0 backdrop-blur-md sm:items-center sm:p-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -1490,41 +1577,41 @@ export default function Home() {
                 exit={{ opacity: 0, y: 16, scale: 0.99 }}
                 transition={{ duration: 0.24 }}
                 onClick={(event) => event.stopPropagation()}
-                className="relative max-h-[90vh] w-full overflow-y-auto rounded-t-2xl border border-ink/10 bg-ivory p-7 shadow-2xl sm:max-w-xl sm:rounded-sm sm:p-10"
+                className="relative max-h-[90vh] w-full overflow-y-auto rounded-t-2xl border border-gold-500/30 bg-brand-950 p-7 text-white shadow-2xl sm:max-w-xl sm:rounded-2xl sm:p-10"
               >
                 <button
                   type="button"
                   aria-label="Fechar detalhes da área"
                   onClick={() => setActiveArea(null)}
-                  className="absolute right-5 top-5 grid size-10 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:border-brand-700 hover:text-brand-700 cursor-pointer"
+                  className="absolute right-5 top-5 grid size-10 place-items-center rounded-full border border-white/20 text-white transition-colors hover:border-gold-400 hover:text-gold-300 cursor-pointer"
                 >
                   <X size={18} />
                 </button>
 
-                <p className="eyebrow">ÁREA DE ATUAÇÃO ESTRATÉGICA</p>
+                <p className="eyebrow-light">ÁREA DE ATUAÇÃO ESTRATÉGICA</p>
 
                 <h2
                   id="area-dialog-title"
-                  className="mt-4 max-w-sm pr-10 font-serif text-3xl leading-tight text-ink sm:text-4xl"
+                  className="mt-4 max-w-sm pr-10 font-serif text-3xl leading-tight text-white sm:text-4xl"
                 >
                   {activeArea.title}
                 </h2>
 
-                <p className="mt-5 text-sm leading-7 text-ink-soft">
+                <p className="mt-5 text-sm leading-7 text-white/75">
                   {activeArea.details}
                 </p>
 
-                <div className="mt-6 border-t border-ink/10 pt-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-800">
+                <div className="mt-6 border-t border-white/10 pt-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400">
                     Principais demandas atendidas:
                   </p>
                   <ul className="mt-4 space-y-3">
                     {activeArea.topics.map((topic) => (
                       <li
                         key={topic}
-                        className="flex items-center gap-3 text-sm text-ink"
+                        className="flex items-center gap-3 text-sm text-white/90"
                       >
-                        <span className="size-2 rounded-full bg-brand-700 shrink-0" />
+                        <span className="size-2 rounded-full bg-gold-400 shrink-0" />
                         <span>{topic}</span>
                       </li>
                     ))}
@@ -1537,14 +1624,14 @@ export default function Home() {
                     target="_blank"
                     size="md"
                     variant="gold"
-                    className="rounded-full shadow-md"
+                    className="rounded-full shadow-gold"
                   >
                     <WhatsAppIcon size={16} /> Consultar sobre esta área
                   </GlowingButton>
                   <button
                     type="button"
                     onClick={() => setActiveArea(null)}
-                    className="px-5 py-3 text-xs font-semibold text-ink-soft hover:text-ink transition-colors cursor-pointer"
+                    className="px-5 py-3 text-xs font-semibold text-white/60 hover:text-white transition-colors cursor-pointer"
                   >
                     Fechar
                   </button>
@@ -1560,7 +1647,7 @@ export default function Home() {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noreferrer"
-            aria-label="Falar no WhatsApp com a Dra. Bárbara Carolis"
+            aria-label="Falar no WhatsApp com Dr. Blener e Dra. Joyce"
             className="group relative flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl active:scale-95"
           >
             <span className="absolute -inset-1 animate-ping rounded-full bg-[#25D366]/40 opacity-75 duration-1000" />

@@ -1,18 +1,8 @@
-# Bárbara Carolis Advogados
+# Magalhães & Santos Advocacia Especializada
 
-Site institucional de alto padrão da **Dra. Bárbara Carolis Lima Diniz** (OAB/MG 168.000), escritório sediado no Centro de Itajubá - MG (Avenida Coronel Carneiro Júnior, 57 - Sala 1004), com atendimento presencial e on-line para todo o Brasil.
+Site institucional e landing page de alto padrão da **Magalhães & Santos Advocacia Especializada**, escritório sediado em Itajubá - MG e liderado pelo **Dr. Blener Magalhães** e pela **Dra. Joyce Santos**.
 
-## Desenvolvimento
-
-Instale as dependências com `npm install` e inicie o ambiente local com `npm run dev`.
-
-Abra [http://localhost:3000](http://localhost:3000) para visualizar o site.
-
-## Tecnologias
-
-- Next.js 16 com App Router e Turbopack
-- React 19
-- Tailwind CSS 4
-- Framer Motion
-- Lucide React
-- Sharp
+- **Sede**: Av. Cel. Carneiro Júnior, 124 - Sl 03 - Centro, Itajubá - MG, 37500-018
+- **WhatsApp / Contato**: (35) 99958-7267
+- **Avaliações no Google**: 5,0 estrelas (63 avaliações)
+- **Áreas de Foco**: Litígio Civil, Litígio de Divórcio & Família, Litígio Trabalhista e Direito do Consumidor
