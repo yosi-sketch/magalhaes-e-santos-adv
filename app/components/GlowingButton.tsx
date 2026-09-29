@@ -9,7 +9,7 @@ interface GlowingButtonProps {
   onClick?: () => void;
   className?: string;
   size?: "sm" | "md" | "lg";
-  variant?: "gold" | "outline" | "white";
+  variant?: "gold" | "petrol" | "outline" | "white";
 }
 
 export default function GlowingButton({
@@ -28,9 +28,10 @@ export default function GlowingButton({
   }[size];
 
   const variantClasses = {
-    gold: "border border-brand-700 bg-brand-700 text-white shadow-sm shadow-brand-950/15 hover:-translate-y-0.5 hover:border-brand-800 hover:bg-brand-800 hover:shadow-md hover:shadow-brand-700/25",
-    outline: "border border-brand-700/50 bg-transparent text-brand-800 hover:-translate-y-0.5 hover:border-brand-700 hover:bg-brand-50 hover:text-brand-900",
-    white: "border border-white bg-white text-brand-900 shadow-sm hover:-translate-y-0.5 hover:bg-brand-50 hover:text-brand-950 hover:shadow-md",
+    gold: "border border-gold-400/80 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-brand-950 font-bold shadow-sm shadow-gold-500/20 hover:-translate-y-0.5 hover:shadow-md hover:shadow-gold-500/35 active:translate-y-0",
+    petrol: "border border-brand-600 bg-brand-700 text-white shadow-sm shadow-brand-950/20 hover:-translate-y-0.5 hover:bg-brand-800 hover:shadow-md hover:shadow-brand-800/25 active:translate-y-0",
+    outline: "border border-brand-700/40 bg-transparent text-brand-800 hover:-translate-y-0.5 hover:border-brand-700 hover:bg-brand-50 hover:text-brand-900 active:translate-y-0",
+    white: "border border-white bg-white text-brand-950 shadow-sm hover:-translate-y-0.5 hover:bg-brand-50 hover:text-brand-900 hover:shadow-md active:translate-y-0",
   }[variant];
 
   const classes =

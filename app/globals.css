@@ -2,33 +2,51 @@
 
 :root {
   color-scheme: light;
-  --brand-gold: #c59b4e;
-  --brand-gold-dark: #936b28;
-  --brand-espresso: #16100c;
-  --brand-ink: #1a1614;
-  --brand-ink-soft: #6d655f;
-  --brand-ivory: #faf8f4;
+  --brand-petrol: #01364f;
+  --brand-petrol-dark: #012b3f;
+  --brand-gold: #dfa938;
+  --brand-gold-light: #f4c864;
+  --brand-gold-dark: #b58826;
+  --brand-ink: #0d1b22;
+  --brand-ink-soft: #556874;
+  --brand-ivory: #faf9f6;
   --brand-paper: #ffffff;
 }
 
 @theme inline {
   --font-serif: var(--font-display), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
-  --color-ink: #1a1614;
-  --color-ink-soft: #6d655f;
-  --color-ivory: #faf8f4;
-  --color-brand-50: #fcf9f2;
-  --color-brand-100: #f7f1e1;
-  --color-brand-200: #eedfc1;
-  --color-brand-300: #e1c794;
-  --color-brand-400: #d3ae67;
-  --color-brand-500: #c59b4e;
-  --color-brand-600: #b0843a;
-  --color-brand-700: #936b28;
-  --color-brand-800: #77531f;
-  --color-brand-900: #4b3413;
-  --color-brand-950: #16100c;
-  --shadow-card: 0 18px 48px rgba(32, 24, 18, 0.08);
+  --color-ink: #0d1b22;
+  --color-ink-soft: #556874;
+  --color-ivory: #faf9f6;
+
+  /* Petrol Navy Palette (directly from logo background) */
+  --color-brand-50: #f1f7fa;
+  --color-brand-100: #dff0f8;
+  --color-brand-200: #b0d8eb;
+  --color-brand-300: #68aed2;
+  --color-brand-400: #2a84af;
+  --color-brand-500: #03648f;
+  --color-brand-600: #024b6e;
+  --color-brand-700: #01364f;
+  --color-brand-800: #012b3f;
+  --color-brand-900: #012130;
+  --color-brand-950: #001722;
+
+  /* Nobre Metallic Gold Palette (from logo typography and monogram) */
+  --color-gold-50: #fdfbf5;
+  --color-gold-100: #fbf4de;
+  --color-gold-200: #f7e5b5;
+  --color-gold-300: #f2d184;
+  --color-gold-400: #eab952;
+  --color-gold-500: #dfa938;
+  --color-gold-600: #c58f26;
+  --color-gold-700: #9e6f18;
+  --color-gold-800: #7e5717;
+  --color-gold-900: #543912;
+  --color-gold-950: #332107;
+
+  --shadow-card: 0 18px 48px rgba(1, 43, 63, 0.08);
 }
 
 html {
@@ -43,8 +61,8 @@ body {
 }
 
 ::selection {
-  background: #936b28;
-  color: #ffffff;
+  background: #01364f;
+  color: #f4c864;
 }
 
 .eyebrow,
@@ -60,11 +78,11 @@ body {
 }
 
 .eyebrow {
-  color: #936b28;
+  color: #c58f26;
 }
 
 .eyebrow-light {
-  color: #e1c794;
+  color: #f2d184;
 }
 
 .eyebrow::before,
@@ -79,7 +97,7 @@ body {
 .nav-link {
   position: relative;
   padding-block: 0.5rem;
-  color: #5c554f;
+  color: #556874;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -93,7 +111,7 @@ body {
   bottom: 0;
   left: 0;
   height: 1px;
-  background: #936b28;
+  background: #dfa938;
   content: "";
   transform: scaleX(0);
   transform-origin: left;
@@ -101,7 +119,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #936b28;
+  color: #01364f;
 }
 
 .nav-link:hover::after {
@@ -113,7 +131,7 @@ body {
 }
 
 .footer-link:hover {
-  color: #e1c794;
+  color: #f2d184;
 }
 
 ::-webkit-scrollbar {
@@ -121,17 +139,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1ebe2;
+  background: #edf3f6;
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 2px solid #f1ebe2;
+  border: 2px solid #edf3f6;
   border-radius: 999px;
-  background: #d3ae67;
+  background: #01364f;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #936b28;
+  background: #dfa938;
 }
 
 @media (prefers-reduced-motion: reduce) {
